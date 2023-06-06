@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,10 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('v1')->group(function () {
     Route::prefix('vehicle')->group(function () {
-        Route::get('/', 'App\Http\Controllers\Api\VehicleController@index');
-        Route::get('/{id}', 'App\Http\Controllers\Api\VehicleController@show');
-        Route::post('/', 'App\Http\Controllers\Api\VehicleController@store');
-        Route::put('/{id}', 'App\Http\Controllers\Api\VehicleController@update');
-        Route::delete('/{id}', 'App\Http\Controllers\Api\VehicleController@destroy');
+        Route::get('/', [VehicleController::class, 'index']);
+        Route::get('/{id}', [VehicleController::class, 'show']);
+        Route::post('/', [VehicleController::class, 'store']);
+        Route::put('/{id}', [VehicleController::class, 'update']);
+        Route::delete('/{id}', [VehicleController::class, 'destroy']);
     });
 });
